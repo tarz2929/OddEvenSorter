@@ -37,18 +37,19 @@ namespace TestApp
             string userInput;
             do
             {
-                Console.Write("Please enter a integer, or \"done\" to output: ");
-                userInput = Console.ReadLine();
+                int userInputInt;
+                Console.Write("Please enter an integer: ");
+                userInput = Console.ReadLine().Trim();
 
-                try
+                if (userInput.ToLower() != "done")
                 {
-                    inputStore.Add(int.Parse(userInput));
-                }
-                catch
-                {
-                    if (userInput.ToLower().Trim() != "done")
+                    if (!int.TryParse(userInput, out userInputInt))
                     {
                         Console.WriteLine("You entered invalid input, please try again.");
+                    }
+                    else 
+                    {
+                        inputStore.Add(userInputInt);
                     }
                 }
             } while (userInput.ToLower().Trim() != "done");
