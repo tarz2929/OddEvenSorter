@@ -1,0 +1,20 @@
+variables: inputArray, oddArray, evenArray
+
+explain purpose prompt
+while the array is not full (10), and done is not entered
+    while the input is not valid
+        prompt for an integer, and add the integer to the array
+for each item in the array
+    if the item is even:
+        add it to even array
+    else:
+        add it to odd array
+sort each array (odd and even) between start and the number of elements we copied in
+copy the elements from odd into the output
+copy the elements from even into the output
+
+
+
+function SortPartialArray (array, start, end) {
+    bubble sort from start to end
+}
