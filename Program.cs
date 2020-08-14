@@ -138,27 +138,13 @@ namespace OddEvenSorter
         static void SortPartialArray(int[] theArray, int startInclusive, int endInclusive)
         {
             // Declare an array that has a length equal to the number of things we're sorting.
-            int[] tempArray = new int[endInclusive-startInclusive+1];
+            int[] tempArray = (int[])theArray.Clone();
             // Set a counter to iterate through theArray while our for loop deals with tempArray.
-            int counter = startInclusive;
+            Array.Resize(ref tempArray, endInclusive+1);
 
-            // Iterate through tempArray and add the values from theArray. 
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                tempArray[i] = theArray[counter];
-                counter++;
-            }
-            // Sort the tempArray.
             Array.Sort(tempArray);
 
-            // Reset the counter for the copy backwards.
-            counter = startInclusive;
-            // Iterate through tempArray and overwrite the values in theArray. 
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                theArray[counter] = tempArray[i];
-                counter++;
-            }
+            tempArray.CopyTo(theArray, 0);
         }
     }
 }
