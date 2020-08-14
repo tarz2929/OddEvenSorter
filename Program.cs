@@ -111,8 +111,8 @@ namespace OddEvenSorter
             // -------------
             // Sorting Logic
             // -------------
-            SortPartialArray(oddArray, 0, oddArrayLogical-1);
-            SortPartialArray(evenArray, 0, evenArrayLogical-1);
+            SortPartialArray(oddArray, oddArrayLogical);
+            SortPartialArray(evenArray, evenArrayLogical);
 
             // -------------
             // Mergin Logic
@@ -135,12 +135,12 @@ namespace OddEvenSorter
                 Console.WriteLine(inputArray[i]);
             }
         }
-        static void SortPartialArray(int[] theArray, int startInclusive, int endInclusive)
+        static void SortPartialArray(int[] theArray, int logicalSize)
         {
             // Declare an array that has a length equal to the number of things we're sorting.
             int[] tempArray = (int[])theArray.Clone();
             // Set a counter to iterate through theArray while our for loop deals with tempArray.
-            Array.Resize(ref tempArray, endInclusive+1);
+            Array.Resize(ref tempArray, logicalSize);
 
             Array.Sort(tempArray);
 
