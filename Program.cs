@@ -17,34 +17,20 @@ namespace TestApp
             */
 
 
-            List<int> numbers = new List<int>(), output = new List<int>();
+            List<int> numbers = new List<int>();
 
             Console.WriteLine("This application will take in some numbers, and sort them in order but with odd numbers first, then even numbers.");
 
             PopulateInput(numbers);
+            
+            numbers = Enumerable.Concat(
+                numbers.Where(x => x % 2 == 1).OrderBy(x => x), 
+                numbers.Where(x => x % 2 == 0).OrderBy(x => x)
+            ).ToList();
 
-            // IEnumerable is kinda like a list, sorta, sometimes.
-            IEnumerable<int> evens = numbers.Where(x => x % 2 == 0).OrderBy(x => x);
-            /*
-            (x => x % 2 == 0)
+            Output(numbers);
 
-            Is a shorthand way of writing something like this:
-
-            static bool anonymous(int x)
-            {
-                return x % 2 == 0;
-            }
-            */
-
-            IEnumerable<int> odds = numbers.Where(x => x % 2 == 1).OrderBy(x => x);
-
-            output.AddRange(odds.ToList());
-            output.AddRange(evens.ToList());
-
-            Output(output);
-
-
-        } // This should be the ONLY point in the program that your program exits.
+        }
 
         static void PopulateInput(List<int> inputStore)
         {
